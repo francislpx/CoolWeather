@@ -1,6 +1,5 @@
 package com.lipingxin.app.coolweather.service;
 
-import com.lipingxin.app.coolweather.activity.WeatherActivity;
 import com.lipingxin.app.coolweather.receiver.AutoUpdateReceiver;
 import com.lipingxin.app.coolweather.util.HttpCallbackListener;
 import com.lipingxin.app.coolweather.util.HttpUtil;
@@ -14,7 +13,6 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 
 /*
  * @author: pingxinli
