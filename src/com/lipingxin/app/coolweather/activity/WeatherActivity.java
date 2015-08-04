@@ -19,6 +19,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import net.youmi.android.banner.AdSize;
+import net.youmi.android.banner.AdView;
 
 /*
  * @author: pingxinli
@@ -94,16 +96,23 @@ public class WeatherActivity extends Activity {
 				}
 			}
 		});
+		
+		// 广告条接口调用（适用于应用）
+		//将广告条adView添加到需要展示的layout控件中
+		LinearLayout adLayout = (LinearLayout) findViewById(R.id.adLayout);
+		AdView adView = new AdView(this, AdSize.FIT_SCREEN);
+		adLayout.addView(adView);
+	
 	}
 
 	private void queryWeatherCode(String districtCode) {
-		System.out.println("******查询参数districtCode：" + districtCode);
+		//System.out.println("******查询参数districtCode：" + districtCode);
 		String address = "http://www.weather.com.cn/data/list3/city" + districtCode + ".xml";
 		queryFromServer(address, "districtCode");
 	}
 
 	private void queryWeatherInfo(String weatherCode) {
-		System.out.println("******查询参数weatherCode：" + weatherCode);
+		//System.out.println("******查询参数weatherCode：" + weatherCode);
 		String address = "http://www.weather.com.cn/data/cityinfo/" + weatherCode + ".html";
 		queryFromServer(address, "weatherCode");
 	}
@@ -125,7 +134,7 @@ public class WeatherActivity extends Activity {
 					
 				} else if("weatherCode".equals(type)) {
 					
-					System.out.println("******查询结果：" + response);
+					//System.out.println("******查询结果：" + response);
 					
 					Utility.handleWeatherResponse(WeatherActivity.this, response);
 					

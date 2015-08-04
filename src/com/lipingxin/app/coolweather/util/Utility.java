@@ -43,7 +43,7 @@ public class Utility {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("*********存储——省份——失败!");
+			//System.out.println("*********存储——省份——失败!");
 			e.printStackTrace();
 		}
 		return false;

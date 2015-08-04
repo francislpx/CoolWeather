@@ -27,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import net.youmi.android.AdManager;
 
 /*
  * @author: pingxinli
@@ -60,6 +61,9 @@ public class ChooseAreaActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		AdManager.getInstance(this).init("086e5e73be286c09", "9a1237d75fbe8477", false);
+		
 		isFromWeatherActivity = getIntent().getBooleanExtra("from_weather_activity", false);
 		SharedPreferences preferences = PreferenceManager.
 				getDefaultSharedPreferences(this);
