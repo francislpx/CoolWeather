@@ -22,13 +22,13 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
 			+ "id integer primary key autoincrement,"
 			+ "name text,"
 			+ "code text,"
-			+ "parent_id)";
+			+ "parent_id integer)";
 	
 	public static final String CREATE_DISTRICT_SQL = "create table district ("
 			+ "id integer primary key autoincrement,"
 			+ "name text,"
 			+ "code text,"
-			+ "parent_id)";
+			+ "parent_id integer)";
 	
 	public CoolWeatherOpenHelper(Context context, String name, 
 			CursorFactory factory, int version) {

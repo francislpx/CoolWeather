@@ -54,11 +54,13 @@ public class CoolWeatherDB {
 	//City存到数据库 
 	public void saveCity(City city) {
 		if(city != null) {
+			//System.out.println("****存储参数：" + city.getName());
 			ContentValues values = new ContentValues();
 			values.put("name", city.getName());
 			values.put("code", city.getCode());
-			values.put("parentId", city.getParentId());
+			values.put("parent_id", city.getParentId());
 			db.insert("city", null, values);
+			//System.out.println("****存储结果：" + result);
 		}
 	}
 	//District存到数据库 
@@ -67,7 +69,7 @@ public class CoolWeatherDB {
 			ContentValues values = new ContentValues();
 			values.put("name", district.getName());
 			values.put("code", district.getCode());
-			values.put("parentId", district.getParentId());
+			values.put("parent_id", district.getParentId());
 			db.insert("district", null, values);
 		}
 	}
@@ -91,17 +93,19 @@ public class CoolWeatherDB {
 		return list;
 	}
 		
-	//读取Province
-	public List<City> loadCity() {
+	//读取City
+	public List<City> loadCity(int provinceId) {
 		List<City> list = new ArrayList<City>();
-		Cursor cursor = db.query("city", null, null, null, null, null, null);
+		Cursor cursor = db.query("city", null, " parent_id = ? ",
+				new String[] {String.valueOf(provinceId)}, null, null, null);
+		
 		if(cursor.moveToFirst()) {
 			do {
 				City city = new City();
 				city.setId(cursor.getInt(cursor.getColumnIndex("id")));
 				city.setName(cursor.getString(cursor.getColumnIndex("name")));
 				city.setCode(cursor.getString(cursor.getColumnIndex("code")));
-				city.setParentId(cursor.getInt(cursor.getColumnIndex("parentId")));
+				city.setParentId(provinceId);
 				list.add(city);
 			} while (cursor.moveToNext());
 		}
@@ -111,17 +115,18 @@ public class CoolWeatherDB {
 		return list;
 	}
 	
-	//读取Province
-	public List<District> loadDistrict() {
+	//读取District
+	public List<District> loadDistrict(int cityId) {
 		List<District> list = new ArrayList<District>();
-		Cursor cursor = db.query("district", null, null, null, null, null, null);
+		Cursor cursor = db.query("district", null, " parent_id = ? ",
+				new String[] {String.valueOf(cityId)}, null, null, null);
 		if(cursor.moveToFirst()) {
 			do {
 				District district = new District();
 				district.setId(cursor.getInt(cursor.getColumnIndex("id")));
 				district.setName(cursor.getString(cursor.getColumnIndex("name")));
 				district.setCode(cursor.getString(cursor.getColumnIndex("code")));
-				district.setParentId(cursor.getInt(cursor.getColumnIndex("parentId")));
+				district.setParentId(cityId);
 				list.add(district);
 			} while (cursor.moveToNext());
 		}
