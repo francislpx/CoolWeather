@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical" >
+	
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#87CEEB">
+        
+        <TextView
+            android:id="@+id/settings_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:gravity="start"
+            android:text="@string/setting_back"/>
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"
+            android:text="@string/action_settings"/>
+        
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+        
+        <TextView
+            android:layout_width="0dp"
+        	android:layout_height="wrap_content"
+        	android:layout_gravity="start"
+        	android:gravity="start"
+        	android:layout_weight="1"
+        	android:paddingStart="10dp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:textSize="18sp"
+            android:text="@string/auto_update_setting"/>
+        
+        <Switch
+	        android:id="@+id/auto_update_setting"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="end"
+        	android:gravity="center"
+	        android:paddingStart="10dp"
+	        android:paddingEnd="10dp"
+	        android:paddingRight="10dp"
+	        android:textOn="开"
+	        android:textOff="关"/>
+        
+    </LinearLayout>
+    
+</LinearLayout>

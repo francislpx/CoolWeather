@@ -14,6 +14,7 @@ import com.lipingxin.app.coolweather.util.Utility;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -65,9 +66,21 @@ public class ChooseAreaActivity extends Activity {
 		AdManager.getInstance(this).init("086e5e73be286c09", "9a1237d75fbe8477", false);
 		
 		isFromWeatherActivity = getIntent().getBooleanExtra("from_weather_activity", false);
+		
+		//第一次进应用，初始化 应用配置
+		SharedPreferences settingPreferences = getApplicationContext().
+				getSharedPreferences("settings", Context.MODE_PRIVATE);
+		
+		boolean isFirstEnter = settingPreferences.getBoolean("first_enter", true);
+		SharedPreferences.Editor editor = settingPreferences.edit();
+		if(isFirstEnter) {
+			editor.putBoolean("auto_update", true);
+			editor.commit();
+		}
+		
+		//判断是否有默认城市
 		SharedPreferences preferences = PreferenceManager.
 				getDefaultSharedPreferences(this);
-		
 		if(preferences.getBoolean("city_selected", false) && !isFromWeatherActivity) {
 			Intent intent = new Intent(this, WeatherActivity.class);
 			startActivity(intent);

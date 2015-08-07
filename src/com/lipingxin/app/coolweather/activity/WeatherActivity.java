@@ -12,7 +12,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -90,7 +91,7 @@ public class WeatherActivity extends Activity {
 						getDefaultSharedPreferences(WeatherActivity.this);
 				
 				String weatherCode = preferences.getString("weather_code", "");
-				Log.e("weatherCode", "weatherCode:" + weatherCode);
+				//Log.e("weatherCode", "weatherCode:" + weatherCode);
 				if(!TextUtils.isEmpty(weatherCode)) {
 					queryWeatherInfo(weatherCode);
 				}
@@ -177,5 +178,36 @@ public class WeatherActivity extends Activity {
 		
 		Intent intent = new Intent(this, AutoUpdateService.class);
 		startService(intent);
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		int id = item.getItemId();
+		Intent intent;
+		
+		switch (id) {
+		case R.id.about_us:
+			intent = new Intent(WeatherActivity.this, AboutUsActivity.class);
+			startActivity(intent);
+			break;
+		
+		case R.id.action_settings:
+			intent = new Intent(WeatherActivity.this, SettingsActivity.class);
+			startActivity(intent);
+			break;
+
+		default:
+			break;
+		}
+		
+		return super.onOptionsItemSelected(item);
 	}
 }

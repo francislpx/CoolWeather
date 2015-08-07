@@ -2,9 +2,19 @@
 <resources>
 
     <string name="app_name">不怎么准的天气</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
+    <string name="app_version">v1.0.1</string>
+    <string name="action_settings">设置</string>
+	
+	<!-- 天气 -->
     <string name="default_weather">~</string>
 
+    <!-- 设置 -->
+    <string name="auto_update_setting">开启自动更新</string>
+    <string name="setting_back">&lt;返回</string>
+
+    <!-- about us -->
+    <string name="about_us">关于我们</string>
+    <string name="copyright">Copyright © 2015 Li Pingxin. All rights reserved.</string>
+    <string name="content_description_logo">App logo</string>
+    
 </resources>
